@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Root menu -->
+    <menuitem id="class_attendance_root" 
+        name="Class Attendance" 
+        sequence="10"/>
+
+
+    <!-- configuration menu -->
+    <menuitem id="class_attendance_configuration" 
+        name="Configuration" 
+        parent="class_attendance_root"
+        sequence="30"/>
+
+</odoo>

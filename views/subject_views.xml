@@ -1,0 +1,29 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_attendance_subject_tree" model="ir.ui.view">
+        <field name="name">attendance.subject.tree</field>
+        <field name="model">attendance.subject</field>
+        <field name="arch" type="xml">
+            <tree string="Attendance Subjects" editable="top">
+                <field name="name" />
+                <field name="code" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_attendance_subject" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">attendance.subject</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+
+    <!-- Menu Item -->
+    <menuitem id="menu_attendance_subject"
+        name="Subjects"
+        parent="class_attendance_configuration"
+        action="action_attendance_subject"
+        sequence="40" />
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_class_section_tree" model="ir.ui.view">
+            <field name="name">class.section.tree</field>
+            <field name="model">class.section</field>
+            <field name="arch" type="xml">
+                <tree string="Class Sections" editable="top">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_class_section" model="ir.actions.act_window">
+            <field name="name">Class Sections</field>
+            <field name="res_model">class.section</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <!-- menu items-->
+        <menuitem id="menu_class_section"
+            name="Section"
+            parent="class_attendance_configuration"
+            action="action_class_section"
+            sequence="30" />
+    </data>
+</odoo>

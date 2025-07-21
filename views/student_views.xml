@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Tree (List) View -->
+        <record id="view_class_student_tree" model="ir.ui.view">
+            <field name="name">class.student.tree</field>
+            <field name="model">class.student</field>
+            <field name="arch" type="xml">
+                <tree string="Students">
+                    <field name="name" />
+                    <field name="present" />
+                    <field name="absent" />
+                    <field name="remarks" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_class_student_form" model="ir.ui.view">
+            <field name="name">class.student.form</field>
+            <field name="model">class.student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="roll_number"/>
+                                <field name="remarks"/>
+                            </group>
+                            <group>
+                                <field name="class_id"/>
+                                <field name="present"/>
+                                <field name="absent"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Window -->
+        <record id="action_class_student" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="res_model">class.student</field>
+            <field name="view_mode">tree,form</field>
+           <field name="type">ir.actions.act_window</field>
+        </record>
+
+        <!-- Menu Item -->
+         <menuitem id="class_student_menu"
+            name="Students"
+            parent="class_attendance_root"
+            action="action_class_student"
+            sequence="20" />
+
+    </data>
+</odoo>
