@@ -2,6 +2,52 @@
 <odoo>
     <data>
 
+
+        <record id="view_attendance_class_kanban" model="ir.ui.view">
+            <field name="name">attendance.class.kanban</field>
+            <field name="model">attendance.class</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_dashboard">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="o_kanban_card" style="border:1px solid #d3d3d3; border-radius:6px; box-shadow: 0 2px 8px #eee; padding:16px; margin-bottom:16px; background: #fafbfc;">
+                                <div style="font-weight:bold; font-size:1.2em; margin-bottom:8px;">
+                                    <field name="class_id"/>
+                                    <t t-if="record.section_id.raw_value">
+                                        - <field name="section_id"/>
+                                    </t>
+                                </div>
+                                <div>
+                                    <strong>Date: </strong> <field name="date"/>
+                                </div>
+                                <div>
+                                    <strong>Teacher: </strong> <field name="teacher_id"/>
+                                </div>
+                                <div>
+                                    <strong>Subject: </strong> <field name="subject_id"/>
+                                    <t t-if="record.subject_code.raw_value">
+                                        (<field name="subject_code"/>)
+                                    </t>
+                                </div>
+                                <div>
+                                    <strong>Start Time: </strong> <field name="start_time" widget="float_time"/>
+                                    | <strong>End Time: </strong> <field name="end_time" widget="float_time"/>
+                                </div>
+                                <div>
+                                    <strong>Students: </strong>
+                                    <field name="total_students"/>
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <a type="open" class="btn btn-primary btn-sm">View</a>
+                                    <a type="edit" class="btn btn-secondary btn-sm">Edit</a>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <!-- attendance.class tree view -->
         <record id="attendance_class_view_tree" model="ir.ui.view">
             <field name="name">attendance.class.view.tree</field>
@@ -28,14 +74,6 @@
             <field name="arch" type="xml">
                 <form string="Class Attendance">
                     <sheet>
-<!--                        <div class="oe_title">-->
-<!--                            <h1>-->
-<!--                                <field name="class_id" placeholder="Select Class" style="font-size: min(4vw, 2.6rem);"/>-->
-<!--                            </h1>-->
-<!--                            <h2>-->
-<!--                                <field name="section_id" style="width: 50%;" placeholder="Select Section"/>-->
-<!--                            </h2>-->
-<!--                        </div>-->
                         <div class="card shadow-sm border-0 mb-4 mw-75">
                             <div class="card-body">
                                 <div class="row align-items-center">
@@ -62,23 +100,25 @@
                                 </div>
                             </div>
                         </div>
-                        <group col="2">
-                            <group string="Class Details" col="2">
-                                <field name="teacher_id" string="Faculty"/>
-                                <field name="subject_id" />
-                                <field name="subject_code" readonly="1" />
+                        <div class="oe_background" style="border:1px solid #d3d3d3; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                            <group col="2">
+                                <group string="Class Details" col="2">
+                                    <field name="teacher_id" string="Faculty"/>
+                                    <field name="subject_id" />
+                                    <field name="subject_code" readonly="1" />
+                                </group>
+                                <group string="Schedule" col="2">
+                                    <field name="date" />
+                                    <field name="start_time" widget="float_time" />
+                                    <field name="end_time" widget="float_time" />
+                                </group>
                             </group>
-                            <group string="Schedule" col="2">
-                                <field name="date" />
-                                <field name="start_time" widget="float_time" />
-                                <field name="end_time" widget="float_time" />
-                            </group>
-                        </group>
+                        </div>
                         <notebook>
                             <page string="Students">
-                                <field name="student_ids">
-                                    <tree create="false" edit="false" editable="bottom">
-                                        <field name="name"/>
+                                <field name="attendance_line_ids">
+                                    <tree create="false" edit="false">
+                                        <field name="student_id"/>
                                         <field name="roll_number"/>
                                         <field name="present"/>
                                         <field name="absent"/>
@@ -103,7 +143,7 @@
             <field name="name">Attendance</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">attendance.class</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
         </record>

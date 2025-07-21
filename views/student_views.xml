@@ -1,16 +1,59 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
+
+        <record id="view_class_student_kanban" model="ir.ui.view">
+            <field name="name">class.student.kanban</field>
+            <field name="model">class.student</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_dashboard">
+                    <field name="name"/>
+                    <field name="roll_number"/>
+                    <field name="class_id"/>
+                    <field name="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="o_kanban_card" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; display: flex; align-items: center; background-color: #fff;">
+
+                                <!-- Student Image -->
+                                <div style="flex: 0 0 auto; margin-right: 12px;">
+                                    <img t-att-src="kanban_image('class.student', 'image', record.id.value)"
+                                         class="img img-fluid rounded"
+                                         style="width: 64px; height: 64px; object-fit: cover;"
+                                         alt="Student Image"/>
+                                </div>
+
+                                <!-- Student Info -->
+                                <div style="flex: 1;">
+                                    <div style="font-weight: bold; font-size: 1.1em;">
+                                        <field name="name"/>
+                                    </div>
+                                    <div>
+                                        Roll Number: <field name="roll_number"/>
+                                    </div>
+                                    <div>
+                                        Class: <field name="class_id"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+
         <!-- Tree (List) View -->
         <record id="view_class_student_tree" model="ir.ui.view">
             <field name="name">class.student.tree</field>
             <field name="model">class.student</field>
             <field name="arch" type="xml">
                 <tree string="Students">
-                    <field name="name" />
-                    <field name="present" />
-                    <field name="absent" />
-                    <field name="remarks" />
+                    <field name="name"/>
+                    <field name="roll_number"/>
+                    <field name="class_id"/>
                 </tree>
             </field>
         </record>
@@ -27,12 +70,10 @@
                             <group>
                                 <field name="name"/>
                                 <field name="roll_number"/>
-                                <field name="remarks"/>
                             </group>
                             <group>
                                 <field name="class_id"/>
-                                <field name="present"/>
-                                <field name="absent"/>
+                                <!-- If you add more fields (remarks, etc), put them here -->
                             </group>
                         </group>
                     </sheet>
@@ -44,21 +85,20 @@
                 </form>
             </field>
         </record>
-
         <!-- Action Window -->
         <record id="action_class_student" model="ir.actions.act_window">
             <field name="name">Students</field>
             <field name="res_model">class.student</field>
-            <field name="view_mode">tree,form</field>
-           <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="type">ir.actions.act_window</field>
         </record>
 
         <!-- Menu Item -->
-         <menuitem id="class_student_menu"
-            name="Students"
-            parent="class_attendance_root"
-            action="action_class_student"
-            sequence="20" />
+        <menuitem id="class_student_menu"
+                  name="Students"
+                  parent="class_attendance_root"
+                  action="action_class_student"
+                  sequence="20"/>
 
     </data>
 </odoo>

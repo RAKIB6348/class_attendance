@@ -62,25 +62,22 @@ class AttendanceClass(models.Model):
         help='Select the class for which attendance is being taken.'
     )
 
-    # one2many relationship to the student records
-    student_ids = fields.One2many(
-        comodel_name='class.student',
-        inverse_name='attendance_id',
-        string='Students',
-        help='List of students for whom attendance is being recorded.',
-        tracking=True,
-        ondelete='cascade',
-    )
-
+    attendance_line_ids = fields.One2many('attendance.student.line', 'attendance_id', string='Attendance Lines')
+    # ... other fields ...
 
     @api.onchange('class_id')
-    def _onchange_fetch_student(self):
+    def _onchange_fetch_students(self):
         if self.class_id:
-            students = self.env['class.student'].search([
-                ('class_id', '=', self.class_id.id)
-            ])
-            self.student_ids = [(0, 0, {
-                'name': student.name,
-                'roll_number': student.roll_number,
-                'class_id': student.class_id.id,
-            }) for student in students]
+            students = self.env['class.student'].search([('class_id', '=', self.class_id.id)])
+            lines = []
+            for student in students:
+                lines.append((0, 0, {'student_id': student.id}))
+            self.attendance_line_ids = lines
+
+
+    total_students = fields.Integer(string='Total Students', compute='_compute_total_students', store=True)
+
+    @api.depends('attendance_line_ids')
+    def _compute_total_students(self):
+        for rec in self:
+            rec.total_students = len(rec.attendance_line_ids)
