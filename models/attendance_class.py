@@ -81,3 +81,6 @@ class AttendanceClass(models.Model):
     def _compute_total_students(self):
         for rec in self:
             rec.total_students = len(rec.attendance_line_ids)
+
+
+

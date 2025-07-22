@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="roll_sequence" model="ir.sequence">
+        <field name="name">Roll Sequence</field>
+        <field name="code">class.attendance.roll</field>
+        <field name="prefix">ROLL/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

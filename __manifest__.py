@@ -24,6 +24,9 @@ Long description of module's purpose
     'data': [
         'security/ir.model.access.csv',
 
+        # data files
+        'data/roll_sequence.xml',
+
         # views files
         'views/menu.xml',
         'views/attendance_class.xml',
