@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_create_attendance_daily" model="ir.cron">
+            <field name="name">Create Attendance from Timetable Daily</field>
+            <field name="model_id" ref="model_attendance_class" />
+            <field name="state">code</field>
+            <field name="code">model.create_attendance_for_today()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active">True</field>
+            <field name="nextcall"
+                eval="(DateTime.now() + relativedelta(hour=6, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')" />
+
+        </record>
+    </data>
+</odoo>

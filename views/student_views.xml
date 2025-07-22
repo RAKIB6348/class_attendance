@@ -51,6 +51,7 @@
             <field name="model">class.student</field>
             <field name="arch" type="xml">
                 <tree string="Students">
+                    <field name="display_name" />
                     <field name="name"/>
                     <field name="roll_number"/>
                     <field name="class_id"/>

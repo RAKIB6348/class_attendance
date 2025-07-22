@@ -26,6 +26,7 @@ Long description of module's purpose
 
         # data files
         'data/roll_sequence.xml',
+        'data/class_attendance_cron.xml',
 
         # views files
         'views/menu.xml',
