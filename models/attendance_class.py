@@ -68,6 +68,13 @@ class AttendanceClass(models.Model):
         help='Select the class for which attendance is being taken.'
     )
 
+    active = fields.Boolean(
+        string='Active',
+        default=True,
+        help='Indicates if the attendance record is active.',
+        invisible=True,
+    )
+
     attendance_line_ids = fields.One2many('attendance.student.line', 'attendance_id', string='Attendance Lines')
     # ... other fields ...
 

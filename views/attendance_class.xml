@@ -38,8 +38,8 @@
                                     <field name="total_students"/>
                                 </div>
                                 <div style="margin-top:10px;">
-                                    <a type="open" class="btn btn-primary btn-sm">View</a>
-                                    <a type="edit" class="btn btn-secondary btn-sm">Edit</a>
+                                    <a type="open" class="btn btn-primary me-2">View</a>
+                                    <a type="edit" class="btn btn-secondary">Edit</a>
                                 </div>
                             </div>
                         </t>
@@ -106,6 +106,7 @@
                                     <field name="teacher_id" string="Faculty"/>
                                     <field name="subject_id" />
                                     <field name="subject_code" readonly="1" />
+                                    <field name="active" invisible="1" />
                                 </group>
                                 <group string="Schedule" col="2">
                                     <field name="date" />
@@ -117,11 +118,11 @@
                         <notebook>
                             <page string="Students">
                                 <field name="attendance_line_ids">
-                                    <tree create="false" edit="false">
+                                    <tree create="false" edit="false" editable="bottom">
                                         <field name="student_id"/>
                                         <field name="roll_number"/>
-                                        <field name="present"/>
-                                        <field name="absent"/>
+                                        <field name="present" />
+                                        <field name="absent" />
                                         <field name="remarks"/>
                                     </tree>
                                 </field>

@@ -9,5 +9,5 @@ class AttendanceStudentLine(models.Model):
     student_id = fields.Many2one('class.student', required=True)
     roll_number = fields.Char(related='student_id.roll_number')
     present = fields.Boolean()
-    absent = fields.Boolean()
+    absent = fields.Boolean(default=True)
     remarks = fields.Char()
