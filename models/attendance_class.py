@@ -67,7 +67,14 @@ class AttendanceClass(models.Model):
         tracking=True,
         help='Select the class for which attendance is being taken.'
     )
-
+    classroom_id = fields.Many2one(
+        'attendance.classroom',
+        string='Classroom',
+        required=False,
+        ondelete='set null',
+        tracking=True,
+        help='Classroom where the class is held.'
+    )
     active = fields.Boolean(
         string='Active',
         default=True,

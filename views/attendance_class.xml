@@ -106,6 +106,7 @@
                                     <field name="teacher_id" string="Faculty"/>
                                     <field name="subject_id" />
                                     <field name="subject_code" readonly="1" />
+                                    <field name="classroom_id" />
                                     <field name="active" invisible="1" />
                                 </group>
                                 <group string="Schedule" col="2">
