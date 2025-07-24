@@ -5,4 +5,5 @@ class_attendance.access_attendance_subject,access_attendance_subject,class_atten
 class_attendance.access_class_class,access_class_class,class_attendance.model_class_class,base.group_user,1,1,1,1
 class_attendance.access_class_student,access_class_student,class_attendance.model_class_student,base.group_user,1,1,1,1
 access_attendance_student_line_manager,attendance.student.line manager,model_attendance_student_line,,1,1,1,1
+class_attendance.access_attendance_classroom,access_attendance_classroom,class_attendance.model_attendance_classroom,base.group_user,1,1,1,1
 

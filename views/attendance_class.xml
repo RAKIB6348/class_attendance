@@ -38,8 +38,8 @@
                                     <field name="total_students"/>
                                 </div>
                                 <div style="margin-top:10px;">
-                                    <a type="open" class="btn btn-primary me-2">View</a>
-                                    <a type="edit" class="btn btn-secondary">Edit</a>
+                                    <a type="open" class="btn btn-outline-primary me-2">View</a>
+                                    <a type="edit" class="btn btn-outline-dark">Edit</a>
                                 </div>
                             </div>
                         </t>

@@ -35,6 +35,7 @@ Long description of module's purpose
         'views/subject_views.xml',
         'views/class_class_views.xml',
         'views/student_views.xml',
+        'views/classroom_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

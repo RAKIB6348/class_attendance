@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <!-- Tree View -->
+        <record id="view_attendance_classroom_tree" model="ir.ui.view">
+            <field name="name">attendance.classroom.tree</field>
+            <field name="model">attendance.classroom</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name" placeholder="Enter classroom name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_attendance_classroom" model="ir.actions.act_window">
+            <field name="name">Classrooms</field>
+            <field name="res_model">attendance.classroom</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <!-- Menu item-->
+        <menuitem id="menu_classroom_attendance"
+            name="Classrooms"
+            parent="class_attendance_configuration"
+            action="action_attendance_classroom"
+            sequence="50" />
+    </data>
+</odoo>
